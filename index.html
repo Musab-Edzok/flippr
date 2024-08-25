@@ -37,14 +37,107 @@
   <title>Flippr</title>
   <link rel="manifest" href="manifest.json">
 
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-image: url('./assets/background.jpg');
+      background-repeat: no-repeat;
+      background-size: cover;
+  }
+
+    .loading {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      position: relative;
+    }
+
+    .app-logo {
+      width: 200px; /* Adjust size as needed */
+      height:90px; /* Adjust size as needed */
+      margin-bottom: 20px; /* Adjust spacing between logo and loader */
+  }
+
+    .loader {
+      border: 6px solid #b5b5b5;
+      border-radius: 50%;
+      border-left: 6px solid #08b9c3;
+      width: 40px;
+      height: 40px;
+      -webkit-animation: spin 1s linear infinite;
+      animation: spin 1s linear infinite;
+    }
+
+    @-webkit-keyframes spin {
+      0% {
+        -webkit-transform: rotate(0deg);
+      }
+
+      100% {
+        -webkit-transform: rotate(360deg);
+      }
+    }
+
+    @keyframes spin {
+      0% {
+        transform: rotate(0deg);
+      }
+
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+  </style>
+
   <script>
     // The value below is injected by flutter build, do not touch.
-    const serviceWorkerVersion = "2350517893";
+    const serviceWorkerVersion = "3351271334";
   </script>
   <!-- This script adds the flutter initialization JS code -->
   <script src="flutter.js" defer></script>
+
+  <script>
+    document.addEventListener('contextmenu', function(e) {
+      e.preventDefault();
+    });
+  
+    document.onkeydown = function(e) {
+      // F12 key
+      if(e.keyCode == 123) { 
+        return false;
+      }
+      // Ctrl+Shift+I
+      if(e.ctrlKey && e.shiftKey && e.keyCode == 'I'.charCodeAt(0)) { 
+        return false;
+      }
+      // Ctrl+Shift+C
+      if(e.ctrlKey && e.shiftKey && e.keyCode == 'C'.charCodeAt(0)) { 
+        return false;
+      }
+      // Ctrl+Shift+J
+      if(e.ctrlKey && e.shiftKey && e.keyCode == 'J'.charCodeAt(0)) { 
+        return false;
+      }
+      // Ctrl+U
+      if(e.ctrlKey && e.keyCode == 'U'.charCodeAt(0)) { 
+        return false;
+      }
+    }
+  </script>
+
 </head>
-<body>
+
+<body style="overflow: hidden">
+
+  <div class="loading">
+    <img src="./assets/logo_white.png" alt="App Logo" class="app-logo">
+    <div class="loader"></div>
+  </div>
+
   <script>
     window.addEventListener('load', function(ev) {
       // Download main.dart.js
@@ -59,6 +152,16 @@
         }
       });
     });
+  </script>
+  <script>
+    window.onload = function () {
+      setTimeout(function () {
+        var loadingIndicator = document.getElementById("loading");
+        if (loadingIndicator) {
+          loadingIndicator.remove();
+        }
+      }, 10000);
+    }
   </script>
 </body>
 </html>
