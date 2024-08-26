@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html prefix="og: https://ogp.me/ns#">
+
 <head>
   <!--
     If you are serving your web app in a path other than the root, change the
@@ -32,7 +33,7 @@
   <link rel="apple-touch-icon" href="icons/Icon-192.png">
 
   <!-- Favicon -->
-  <link rel="icon" type="image/png" href="favicon.ico"/>
+  <link rel="icon" type="image/png" href="favicon.ico" />
 
   <title>Flippr</title>
   <link rel="manifest" href="manifest.json">
@@ -47,7 +48,7 @@
       background-image: url('./assets/background.jpg');
       background-repeat: no-repeat;
       background-size: cover;
-  }
+    }
 
     .loading {
       display: flex;
@@ -57,10 +58,10 @@
     }
 
     .app-logo {
-      width: 200px; /* Adjust size as needed */
-      height:90px; /* Adjust size as needed */
-      margin-bottom: 20px; /* Adjust spacing between logo and loader */
-  }
+      width: 200px;
+      height: 90px;
+      margin-bottom: 20px;
+    }
 
     .loader {
       border: 6px solid #b5b5b5;
@@ -91,43 +92,82 @@
         transform: rotate(360deg);
       }
     }
+
+    /* Responsive Styles */
+    @media (max-width: 768px) {
+      .app-logo {
+        width: 150px;
+        /* Smaller logo for mobile */
+        height: 68px;
+        /* Adjust height proportionally */
+        margin-bottom: 15px;
+        /* Adjust spacing for mobile */
+      }
+
+      .loader {
+        width: 30px;
+        /* Smaller loader for mobile */
+        height: 30px;
+        border-width: 5px;
+        /* Slightly smaller border */
+      }
+    }
+
+    @media (min-width: 769px) {
+      .app-logo {
+        width: 250px;
+        /* Larger logo for desktop */
+        height: 112px;
+        /* Adjust height proportionally */
+        margin-bottom: 25px;
+        /* Adjust spacing for desktop */
+      }
+
+      .loader {
+        width: 50px;
+        /* Larger loader for desktop */
+        height: 50px;
+        border-width: 7px;
+        /* Slightly larger border */
+      }
+    }
   </style>
 
   <script>
     // The value below is injected by flutter build, do not touch.
-    const serviceWorkerVersion = "3203705329";
+    const serviceWorkerVersion = "2433813690";
   </script>
   <!-- This script adds the flutter initialization JS code -->
   <script src="flutter.js" defer></script>
 
-  <!-- <script>
-    document.addEventListener('contextmenu', function(e) {
+  <script>
+    document.addEventListener('contextmenu', function (e) {
       e.preventDefault();
     });
-  
-    document.onkeydown = function(e) {
+
+    document.onkeydown = function (e) {
       // F12 key
-      if(e.keyCode == 123) { 
+      if (e.keyCode == 123) {
         return false;
       }
       // Ctrl+Shift+I
-      if(e.ctrlKey && e.shiftKey && e.keyCode == 'I'.charCodeAt(0)) { 
+      if (e.ctrlKey && e.shiftKey && e.keyCode == 'I'.charCodeAt(0)) {
         return false;
       }
       // Ctrl+Shift+C
-      if(e.ctrlKey && e.shiftKey && e.keyCode == 'C'.charCodeAt(0)) { 
+      if (e.ctrlKey && e.shiftKey && e.keyCode == 'C'.charCodeAt(0)) {
         return false;
       }
       // Ctrl+Shift+J
-      if(e.ctrlKey && e.shiftKey && e.keyCode == 'J'.charCodeAt(0)) { 
+      if (e.ctrlKey && e.shiftKey && e.keyCode == 'J'.charCodeAt(0)) {
         return false;
       }
       // Ctrl+U
-      if(e.ctrlKey && e.keyCode == 'U'.charCodeAt(0)) { 
+      if (e.ctrlKey && e.keyCode == 'U'.charCodeAt(0)) {
         return false;
       }
     }
-  </script> -->
+  </script>
 
 </head>
 
@@ -139,14 +179,14 @@
   </div>
 
   <script>
-    window.addEventListener('load', function(ev) {
+    window.addEventListener('load', function (ev) {
       // Download main.dart.js
       _flutter.loader.loadEntrypoint({
         serviceWorker: {
           serviceWorkerVersion: serviceWorkerVersion,
         },
-        onEntrypointLoaded: function(engineInitializer) {
-          engineInitializer.initializeEngine().then(function(appRunner) {
+        onEntrypointLoaded: function (engineInitializer) {
+          engineInitializer.initializeEngine().then(function (appRunner) {
             appRunner.runApp();
           });
         }
@@ -156,7 +196,7 @@
   <script>
     window.onload = function () {
       setTimeout(function () {
-        var loadingIndicator = document.getElementById("loading");
+        var loadingIndicator = document.querySelector(".loading"); // Changed from getElementById to querySelector
         if (loadingIndicator) {
           loadingIndicator.remove();
         }
@@ -164,4 +204,5 @@
     }
   </script>
 </body>
+
 </html>
